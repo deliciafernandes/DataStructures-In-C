@@ -190,7 +190,7 @@ struct node *insert_end(struct node *start)
             ptr=ptr->next;
         }
         ptr->next=new_node;
-        new_node->prev=ptr->prev;
+        new_node->prev=ptr;
         new_node->next=NULL;
     }
     return start;
@@ -231,7 +231,7 @@ struct node *insert_after(struct node *start)
         new_node->next=ptr;
         ptr->prev=new_node;
         preptr->next=new_node;
-        new_node->prev=preptr->next;
+        new_node->prev=preptr;
     }
     return start;
 };
@@ -317,6 +317,7 @@ struct node *delete_end(struct node *start)
     return start;
 };
 
+
 struct node *delete_after(struct node *start)
 {
     if (start==NULL)
@@ -340,7 +341,7 @@ struct node *delete_after(struct node *start)
             ptr=ptr->next;
         }
         
-        ptr->prev=preptr;
+        ptr->next->prev=preptr;
         preptr->next=ptr->next;
         
         free(ptr);
@@ -370,7 +371,7 @@ struct node *delete_before(struct node *start)
             preptr=ptr;
             ptr=ptr->next;
         }
-        ptr->prev=preptr;
+        ptr->next->prev=preptr;
         preptr->next=ptr->next;
         
         free(ptr);
@@ -401,7 +402,7 @@ struct node *delete_node(struct node *start)
             preptr=ptr;
             ptr=ptr->next;
         }
-        ptr->prev=preptr;
+        ptr->next->prev=preptr;
         preptr->next=ptr->next;
         
         free(ptr);

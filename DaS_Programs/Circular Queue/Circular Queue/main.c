@@ -107,7 +107,7 @@ void peek()
     }
     else
     {
-        printf("The deleted value is: %d\n",queue[f]);
+        printf("The value is: %d\n",queue[f]);
     }
 }
 

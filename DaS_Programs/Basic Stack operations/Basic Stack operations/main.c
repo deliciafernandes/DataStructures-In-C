@@ -15,30 +15,30 @@ int main()
     do
     {
         printf("\t\t*****MENU*****\t\t");
-        printf("\n1.PUSH\n2.POP\n3.PEEK\n4.DISPLAY\n5.EXIT");
+        printf("\n1.PUSH\n2.POP\n3.PEEK\n4.DISPLAY\n5.EXIT\n");
         printf("Enter your choice: ");
         scanf("%d",&ch);
         
         switch (ch)
         {
             case 1:
-                int push(top);
+                push(top);
                 break;
                 
             case 2:
-                int pop(top);
+                pop(top);
                 break;
                 
             case 3:
-                int peek(top);
+                peek(top);
                 break;
                 
             case 4:
-                int display();
+                display(top);
                 break;
                 
             default:
-                printf("INVALID CHOICE!\n");
+                printf("BYE!\n");
                 break;
         }
     } while (ch<=4);
@@ -64,7 +64,7 @@ int push(int top)
     return top;
 }
 
-int pop(top)
+int pop(int top)
 {
     if (top==-1)
     {
@@ -74,8 +74,8 @@ int pop(top)
     {
         int temp;
         temp=stack[top];
-        top--;
         printf("The last element deleted is: %d",temp);
+        top--;
     }
      return top;
 }

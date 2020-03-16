@@ -85,7 +85,7 @@ int main()
                 break;
                 
             default:
-                printf("INVALID CHOICE!");
+                printf("BYE!\n\n");
                 break;
         }
     }while (ch<=13) ;
@@ -130,7 +130,7 @@ struct node * display(struct node *start)
         
         while (ptr!=NULL)
         {
-            printf("%d ",ptr->data);
+            printf("%d \n",ptr->data);
             ptr=ptr->next;
         }
     }
@@ -165,13 +165,12 @@ struct node *insert_beg(struct node *start)
 
 struct node *insert_end(struct node *start)
 {
-    struct node *new_node, *ptr;
+    struct node *new_node;
     int num;
     
     printf("Enter the data:\n");
     scanf("%d",&num);
     
-    ptr=start;
     
     new_node=(struct node *)malloc(sizeof(struct node));        //creation of new_node
     new_node->data=num;                                         //data of newnode now has num
@@ -184,6 +183,9 @@ struct node *insert_end(struct node *start)
     }
     else
     {
+        struct node *ptr;
+        ptr=start;
+        
         while (ptr->next!=NULL)
         {
             ptr=ptr->next;
@@ -404,12 +406,11 @@ struct node *delete_list(struct node *start)
     {
         struct node *ptr;
         
-        ptr=start->next;
+        ptr=start;
         
-        while (ptr->next!=start)
+        while (ptr->next!=NULL)
         {
             start=start->next;
-            ptr->next=NULL;
             free(ptr);
         }
     }
