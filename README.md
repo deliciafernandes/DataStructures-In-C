@@ -1,4 +1,4 @@
-### Basic Algorithms In C
+### Basic Data Structures In C
 
 > Hey, I'm Delicia, hoping this will be of any help to any confused nuggets!
 
