@@ -3,16 +3,17 @@
 #define MAX 10
 
 int stack[MAX],top=-1;
-int push(int);
+void push(int);
 int pop(int);
 int peek(int);
-int display(int);
+void display();
 
 int main()
 {
     int ch;
-    
-    do
+    int val;
+    clrscr();
+    while(1)
     {
         printf("\t\t*****MENU*****\t\t");
         printf("\n1.PUSH\n2.POP\n3.PEEK\n4.DISPLAY\n5.EXIT\n");
@@ -21,9 +22,10 @@ int main()
         
         switch (ch)
         {
-            case 1:
-                push(top);
-                break;
+            case 1:printf("\nEnter the element value: ");
+		           scanf("%d",&val);
+		           push(val);
+		           break;
                 
             case 2:
                 pop(top);
@@ -34,66 +36,59 @@ int main()
                 break;
                 
             case 4:
-                display(top);
+                display();
                 break;
                 
-            default:
-                printf("BYE!\n");
-                break;
+            case 5: exit(0);
+
+	        default:
+		            printf("\nYou entered invalid choice!\n");
+		            break;
         }
-    } while (ch<=4);
-    
-    return 0;
+    }
 }
 
-int push(int top)
+void push(int val)
 {
     if (top==MAX-1)
     {
-        printf("Stack Overflow!");
+        printf("\nStack Overflow!");
     }
     else
-    {
-        int val;
-        printf("Enter the element value: ");
-        scanf("%d",&val);
-        
+    {    
         top++;
         stack[top]=val;
     }
-    return top;
 }
 
-int pop(int top)
+int pop()
 {
     if (top==-1)
     {
-        printf("Stack Empty");
+       printf("\nStack Empty");
     }
     else
     {
-        int temp;
-        temp=stack[top];
-        printf("The last element deleted is: %d",temp);
-        top--;
+       top--;
+	   printf("\nThe last element deleted is: %d",stack[top+1]);
     }
      return top;
 }
 
-int peek(int top)
+int peek()
 {
     if (top==-1)
     {
-        printf("Stack Empty");
+       printf("\nStack Empty");
     }
     else
     {
-        printf("The last element deleted is: %d",stack[top]);
+        printf("\nThe element on top of stack is: %d",stack[top]);
     }
     return top;
 }
 
-int display(int top)
+void display()
 {
     if (top==-1)
     {
@@ -104,8 +99,7 @@ int display(int top)
         int i;
         for (i=top; i>=0; i--)
         {
-            printf("%d\n",stack[top]);
+            printf("%d\n",stack[i]); 
         }
     }
-    return top;
 }
