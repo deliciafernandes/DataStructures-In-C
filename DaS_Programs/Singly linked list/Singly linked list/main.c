@@ -379,7 +379,7 @@ struct node *delete_before(struct node *start)
             preptr=ptr;
             ptr=ptr->next;
         }
-	if(ptr2->next==NULL)
+	if(ptr->next==NULL)
 		{
 			printf("\nValue not found, Can't delete\n");
 		}
