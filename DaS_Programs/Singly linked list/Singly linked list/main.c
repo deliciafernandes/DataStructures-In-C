@@ -364,8 +364,18 @@ struct node *delete_before(struct node *start)
         ptr=start->next;
         if(preptr->data==val)
 		{
-			printf("\nThis is the first node. Nothing to delete\n");
-			return start;
+			int c;
+			printf("\nThis is the first node. Nothing to delete\n Do you want to delete the first node?\n If Yes enter 1 else any number");
+			printf("\n Number entered : ");
+			scanf("%d",&c);
+			if(c==1)
+			{
+				start=delete_beg(start);
+			}
+			else
+			{
+				return start;
+			}
 		}
 		if(ptr->data==val)
 		{
