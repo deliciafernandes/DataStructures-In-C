@@ -328,15 +328,21 @@ struct node *delete_after(struct node *start)
         preptr=start;
         ptr=start->next;
         
-        while (preptr->data!=val)
+        while (ptr->next!=NULL&&preptr->data!=val)
         {
             preptr=ptr;
             ptr=ptr->next;
         }
-        preptr->next=ptr->next;
-        
-        free(ptr);
-    }
+        if(ptr->next==NULL)
+		{
+			printf("\nValue not found, Can't delete\n");
+		}
+	    else
+	    {
+		    preptr->next=ptr->next;
+	    }
+	    free(ptr);
+        }
     return start;
 };
 
@@ -356,14 +362,42 @@ struct node *delete_before(struct node *start)
         
         preptr=start;
         ptr=start->next;
-        
-        while (ptr->next->data!=val)
+        if(preptr->data==val)
+		{
+			int c;
+			printf("\nThis is the first node. Nothing to delete\n Do you want to delete the first node?\n If Yes enter 1 else any number");
+			printf("\n Number entered : ");
+			scanf("%d",&c);
+			if(c==1)
+			{
+				start=delete_beg(start);
+			}
+			else
+			{
+				return start;
+			}
+		}
+		if(ptr->data==val)
+		{
+			preptr=start;
+			start=start->next;
+			free(preptr);
+			return start;
+        }
+        while (ptr->next!=NULL&&ptr->next->data!=val)
         {
             preptr=ptr;
             ptr=ptr->next;
         }
-        preptr->next=ptr->next;
-        free(ptr);
+	if(ptr->next==NULL)
+		{
+			printf("\nValue not found, Can't delete\n");
+		}
+	else
+	{
+        	preptr->next=ptr->next;
+        	free(ptr);
+	}
     }
     return start;
 };
